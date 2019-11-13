@@ -5,8 +5,11 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.SurfaceView;
+import java.lang.Thread;
 
 import java.util.ArrayList;
+
+import static java.lang.Thread.sleep;
 
 /**
  * AnimationView
@@ -20,6 +23,7 @@ public class AnimationView extends SurfaceView{
     // track the current dimensions of this surface view
     private int width;
     private int height;
+
 
     //a list of the animations I'm currently displaying
     private ArrayList<Animation> anims = new ArrayList<Animation>();
@@ -76,10 +80,16 @@ public class AnimationView extends SurfaceView{
     /** draw the animations */
     @Override
     public void draw(Canvas canvas) {
+
+
         super.draw(canvas);
         for(Animation anim : anims) {
-            anim.draw(canvas);
+
+                anim.draw(canvas);
         }
+
+
+
     }//draw
 
     /** This method is called each time the seekbar's progress changes.  This will always be a

@@ -19,12 +19,12 @@
         android:layout_height="wrap_content">
 
         <SeekBar
+            android:id="@+id/seekBar"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/seekBar"
             android:layout_weight="1"
             android:focusable="true"
-            android:max="100" />
+            android:max="900" />
 
         <Button
             android:layout_width="wrap_content"
