@@ -18,13 +18,18 @@ public class StarAnimation extends Animation {
     public static final int INIT_STAR_COUNT = 100;
     private Vector<Star> field = new Vector<Star>();
     private int stars = 100;
-
+    private testThread thread;
     /* when this is set to 'false' the next animation frame won't twinkle */
     private boolean twinkle = true;
+    private TestThread2 tt2;
 
     /** ctor expects to be told the size of the animation canvas */
     public StarAnimation(int initWidth, int initHeight) {
         super(initWidth, initHeight);
+        tt2 = new TestThread2(this);
+
+            tt2.start();
+
     }
 
     /** whenever the canvas size changes, generate new stars */
@@ -79,14 +84,20 @@ public class StarAnimation extends Animation {
         //Star.starPaint.setColor(Color.rgb(brightness, brightness, brightness));
         //this.twinkle = false;
 
-        int starCount = INIT_STAR_COUNT + newProgress;
+        //int starCount = INIT_STAR_COUNT + newProgress;
 
-            for (int i = 0; i < newProgress; i++) {
+
+        if(newProgress < stars) {
+            for (int i = 0; i < stars - newProgress; i++) {
                 removeStar();
+            }
+        }else{
+            for(int i = 0; i < newProgress - stars; i++){
                 addStar();
             }
+        }
 
+        stars = 100 + newProgress;
 
-        stars = starCount;
     }
 }//class StarAnimation

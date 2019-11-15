@@ -28,7 +28,8 @@ public class MainActivity extends Activity
 
         //Setup the animation(s)
         myAV = (AnimationView)findViewById(R.id.animationArea);
-        myAV.addAnimation(new StarAnimation(myAV.getMyWidth(), myAV.getMyHeight()));
+        StarAnimation SA = new StarAnimation(myAV.getMyWidth(), myAV.getMyHeight());
+        myAV.addAnimation(SA);
 
         //Let me know when someone taps the button
         theButton = (Button)findViewById(R.id.button);
@@ -38,8 +39,10 @@ public class MainActivity extends Activity
         theSeekBar = (SeekBar)findViewById(R.id.seekBar);
         theSeekBar.setOnSeekBarChangeListener(this);
 
-        testThread t = new testThread(myAV);
+        testThread t = new testThread(myAV, SA);
         t.start();
+
+
 
 
 
