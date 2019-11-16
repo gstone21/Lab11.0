@@ -11,9 +11,9 @@ public class TestThread2 extends Thread {
 
     @Override
     public void run() {
-        //synchronized (sa) {
-            while (true) {
-                try {
+        while (true) {
+            try {
+                synchronized (sa) {
                     Random num = new Random();
                     int addOrRemove = num.nextInt(2);
                     if (addOrRemove == 0) {
@@ -22,11 +22,11 @@ public class TestThread2 extends Thread {
                         sa.removeStar();
                     }
                     Thread.sleep(2);
-
-                } catch (Exception e) {
-                    System.out.println(e);
                 }
             }
-       //}
+            catch (Exception e) {
+                System.out.println(e);
+            }
+        }
     }
 }

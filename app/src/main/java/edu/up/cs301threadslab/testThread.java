@@ -24,6 +24,5 @@ public class testThread extends java.lang.Thread{
                 }
             }
         }
-
     }
 }

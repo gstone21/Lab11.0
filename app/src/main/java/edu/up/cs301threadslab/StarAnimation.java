@@ -27,8 +27,7 @@ public class StarAnimation extends Animation {
     public StarAnimation(int initWidth, int initHeight) {
         super(initWidth, initHeight);
         tt2 = new TestThread2(this);
-
-            tt2.start();
+        tt2.start();
 
     }
 
@@ -38,10 +37,10 @@ public class StarAnimation extends Animation {
         super.setSize(newWidth, newHeight);
 
         //Create the stars
-        field = new Vector<Star>();
-        for(int i = 0; i < INIT_STAR_COUNT; ++i) {
-            addStar();
-        }
+            field = new Vector<Star>();
+            for (int i = 0; i < INIT_STAR_COUNT; ++i) {
+                addStar();
+            }
     }
 
     /** adds a randomly located star to the field */
@@ -51,7 +50,6 @@ public class StarAnimation extends Animation {
 
         int x = rand.nextInt(width);
         int y = rand.nextInt(height);
-
 
         field.add(new Star(x, y));
     }//addStar
@@ -86,7 +84,6 @@ public class StarAnimation extends Animation {
 
         //int starCount = INIT_STAR_COUNT + newProgress;
 
-
         if(newProgress < stars) {
             for (int i = 0; i < stars - newProgress; i++) {
                 removeStar();
@@ -98,6 +95,5 @@ public class StarAnimation extends Animation {
         }
 
         stars = 100 + newProgress;
-
     }
 }//class StarAnimation
