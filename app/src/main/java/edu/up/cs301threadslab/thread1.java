@@ -1,19 +1,20 @@
 package edu.up.cs301threadslab;
 import java.lang.Thread;
 
-public class testThread extends java.lang.Thread{
+public class thread1 extends java.lang.Thread{
     Thread t;
     private AnimationView AV;
-    public StarAnimation SA;
+    public StarAnimation starAnim;
 
-    public testThread(AnimationView v, StarAnimation sa){
+    public thread1(AnimationView v, StarAnimation starAn){
         AV = v;
-        SA = sa;
+        starAnim = starAn;
     }
 
     @Override
     public void run() {
-        synchronized (SA) {
+        synchronized (starAnim) {
+            //critical section
             while (true) {
                 try {
                     this.AV.postInvalidate();

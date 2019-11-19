@@ -2,24 +2,25 @@ package edu.up.cs301threadslab;
 
 import java.util.Random;
 
-public class TestThread2 extends Thread {
-    private StarAnimation sa;
+public class thread2 extends Thread {
+    private StarAnimation star;
 
-    public TestThread2(StarAnimation sa) {
-        this.sa = sa;
+    public thread2(StarAnimation star) {
+        this.star = star;
     }
 
     @Override
     public void run() {
         while (true) {
             try {
-                synchronized (sa) {
+                synchronized (star) {
+                    //critical section
                     Random num = new Random();
                     int addOrRemove = num.nextInt(2);
                     if (addOrRemove == 0) {
-                        sa.addStar();
+                        star.addStar();
                     } else {
-                        sa.removeStar();
+                        star.removeStar();
                     }
                     Thread.sleep(2);
                 }

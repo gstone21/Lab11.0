@@ -1,11 +1,8 @@
 package edu.up.cs301threadslab;
 
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.util.Log;
 
 import java.util.Vector;
-import java.util.Random;
 
 /**
  * StarAnimation
@@ -18,16 +15,16 @@ public class StarAnimation extends Animation {
     public static final int INIT_STAR_COUNT = 100;
     private Vector<Star> field = new Vector<Star>();
     private int stars = 100;
-    private testThread thread;
+    private thread1 thread;
     /* when this is set to 'false' the next animation frame won't twinkle */
     private boolean twinkle = true;
-    private TestThread2 tt2;
+    private thread2 myThread;
 
     /** ctor expects to be told the size of the animation canvas */
     public StarAnimation(int initWidth, int initHeight) {
         super(initWidth, initHeight);
-        tt2 = new TestThread2(this);
-        tt2.start();
+        myThread = new thread2(this);
+        myThread.start();
 
     }
 
@@ -78,11 +75,6 @@ public class StarAnimation extends Animation {
     /** the seekbar progress specifies the brightnes of the stars. */
     @Override
     public void progressChange(int newProgress) {
-        //int brightness = 255 - (newProgress * 2);
-        //Star.starPaint.setColor(Color.rgb(brightness, brightness, brightness));
-        //this.twinkle = false;
-
-        //int starCount = INIT_STAR_COUNT + newProgress;
 
         if(newProgress < stars) {
             for (int i = 0; i < stars - newProgress; i++) {

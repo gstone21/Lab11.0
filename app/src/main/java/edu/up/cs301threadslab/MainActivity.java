@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.SeekBar;
 
 /**
@@ -19,7 +18,7 @@ public class MainActivity extends Activity
     public AnimationView myAV;
     private Button theButton;
     private SeekBar theSeekBar;
-    private testThread t;
+    private thread1 t;
     private StarAnimation SA;
 
     @Override
@@ -27,20 +26,20 @@ public class MainActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Setup the animation(s)
-        myAV = (AnimationView)findViewById(R.id.animationArea);
+        //Setup the animations
+        myAV = findViewById(R.id.animationArea);
         SA = new StarAnimation(myAV.getMyWidth(), myAV.getMyHeight());
         myAV.addAnimation(SA);
 
         //Let me know when someone taps the button
-        theButton = (Button)findViewById(R.id.button);
+        theButton = findViewById(R.id.button);
         theButton.setOnClickListener(this);
 
-        //Let me know when someone adjusts the seekbar
-        theSeekBar = (SeekBar)findViewById(R.id.seekBar);
+        //seekBar listener
+        theSeekBar = findViewById(R.id.seekBar);
         theSeekBar.setOnSeekBarChangeListener(this);
 
-        t = new testThread(myAV, SA);
+        t = new thread1(myAV, SA);
         t.start();
     }//onCreate
 
